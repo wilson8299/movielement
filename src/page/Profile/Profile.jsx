@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "@/store/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { userInfo, logout } from "@/store/authSlice";
 import {
   Wrapper,
   Container,
@@ -14,12 +14,13 @@ import {
 } from "./Profile.style";
 
 const Profile = () => {
+  const user = useSelector(userInfo);
   const dispatch = useDispatch();
 
   return (
     <Wrapper>
       <Container>
-        <Title>Title</Title>
+        <Title>{user.name}</Title>
         <Content>
           <Side>
             <SubTitle>Profile</SubTitle>
